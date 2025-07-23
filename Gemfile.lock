@@ -323,6 +323,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
+  dotenv
   faker
   ffaker
   kamal
