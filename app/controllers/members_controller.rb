@@ -20,7 +20,7 @@ class MembersController < ApplicationController
           render json: { message: "Unable to find member" }, status: :not_found
         end
       else
-        render json: { message: "Please provide all required fields" }
+        render json: { message: "Please provide all required fields" }, status: :bad_request
       end
     elsif required_params.present?
       @member = Member.find_by(search_params)
@@ -30,11 +30,12 @@ class MembersController < ApplicationController
         render json: { message: "Unable to find member" }, status: :not_found
       end
     else
-      render json: { message: "Please provide all required fields" }
+      render json: { message: "Please provide all required fields" }, status: :bad_request
     end
   end
 
   private
+
   def required_params
     required_params = params[:first_name] && params[:last_name] && params[:dob] && params[:zip]
   end
